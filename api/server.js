@@ -8,7 +8,10 @@ mongoose.connect(mongodb_url)
 
 const server = Hapi.server({
     port,
-    host: 'localhost'
+    host: 'localhost',
+    routes: {
+        cors: true
+    }
 })
 
 for (let route in routes) {

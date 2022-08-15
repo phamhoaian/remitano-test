@@ -16,7 +16,13 @@
 
   &-navigation {
     display: flex;
+    align-items: center;
     gap: 1rem;
+  }
+
+  &-username {
+    color: #0099ff;
+    font-weight: bold;
   }
 
   &-input {
@@ -24,6 +30,7 @@
     border: none;
     border-radius: 3px;
     padding: 0.5rem 1rem;
+    color: #FFF;
     &::placeholder {
       color: #c4c4c4;
     }
@@ -35,5 +42,10 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    height: 2rem;
+    &-danger {
+      @extend .App-button;
+      background: #d93025;
+    }
   }
 }
