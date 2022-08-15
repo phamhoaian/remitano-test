@@ -1,0 +1,39 @@
+.App {
+  &-logo {
+    cursor: pointer;
+  }
+
+  &-header {
+    background-color: #282c34;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: white;
+    padding: 0 5rem;
+    border-bottom: 1px solid #444;
+  }
+
+  &-navigation {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &-input {
+    background: gray;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    &::placeholder {
+      color: #c4c4c4;
+    }
+  }
+
+  &-button {
+    background: #0099ff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+}
