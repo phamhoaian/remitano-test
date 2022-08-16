@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { userLogin, setUser } from 'state/auth'
 import { useGetUser } from 'state/auth/hooks'
+import { Link } from 'react-router-dom'
+import { Paths } from 'routes'
 import './Header.scss'
 
 const Header = () => {
@@ -17,13 +19,20 @@ const Header = () => {
   }
   return (
     <header className="App-header">
-      <h1 className="App-logo">Funny Movies</h1>
+      <Link to={Paths.Home} className="App-logo">
+        <h1>Funny Movies</h1>
+      </Link>
       <div className="App-navigation">
         {user ? (
           <>
             <div>
               Welcome <span className="App-username">{user.username}</span>
             </div>
+            <Link to={Paths.ShareMovie}>
+              <button
+                className="App-button"
+              >Share a movie</button>
+            </Link>
             <button
               className="App-button-danger"
               onClick={onLogout}
