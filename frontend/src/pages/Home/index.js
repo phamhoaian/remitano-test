@@ -14,7 +14,7 @@ const Home = () => {
   const totalItems = useGetTotalItems()
   useEffect(() => {
     dispatch(fetchMovies({ limit: LIMIT_PER_PAGE, offset: 0 }))
-  }, [])
+  }, [dispatch])
   const onLoadMore = () => {
     dispatch(fetchMoreMovies({ limit: LIMIT_PER_PAGE, offset: movies.length }))
   }

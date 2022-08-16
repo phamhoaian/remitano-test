@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import MovieService from 'services/MovieService'
-import movie, { setMovieList } from 'state/movie'
+import { setMovieList } from 'state/movie'
 import { useGetMovieList } from 'state/movie/hooks'
 import { validateYouTubeUrl } from 'utils/function'
 import { toast } from 'react-toastify'
