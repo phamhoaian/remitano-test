@@ -21,7 +21,3 @@ for (let route in routes) {
 server.start().then(() => {
     console.log('Server running on %s', server.info.uri)
 })
-
-server.listen(port, mongodb_url, function() {
-    console.log('Listening on port %d', port);
-})
