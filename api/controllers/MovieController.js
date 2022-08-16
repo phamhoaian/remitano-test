@@ -14,7 +14,8 @@ exports.addMovie = async (req, h) => {
         if (match && match[2].length == 11) { // parse video id from url
             const detail = await getYoutubeVideoDetails(match[2])
             const data = {
-                url
+                url,
+                videoId: match[2]
             }
             if (detail && detail.items && Array.isArray(detail.items) && detail.items[0]) {
                 data.title = detail.items[0].snippet.title

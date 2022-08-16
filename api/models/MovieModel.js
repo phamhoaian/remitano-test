@@ -7,6 +7,10 @@ const movieSchema = new mongoose.Schema({
       unique: true,
       index: true,
     },
+    videoId: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,

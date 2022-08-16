@@ -9,8 +9,11 @@ export default class MovieService {
     return BaseService.fetchData(REQUEST_TYPE.POST, apiUrl, null, body)
   }
 
-  static async getAllMovies () {
+  static async getAllMovies (page = 1, offset = 0) {
     const apiUrl = '/movies'
-    return BaseService.fetchData(REQUEST_TYPE.GET, apiUrl)
+    const query = {
+      page, offset
+    }
+    return BaseService.fetchData(REQUEST_TYPE.GET, apiUrl, query)
   }
 }

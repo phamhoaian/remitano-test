@@ -1,7 +1,13 @@
 .App {
   &-logo {
-    color: #FFF;
     text-decoration: none;
+    h1 {
+      color: #FFF;
+      font-size: 1rem;
+      @media screen and (min-width: 567px) {
+        font-size: 2rem;
+      }
+    }
   }
 
   &-header {
@@ -11,8 +17,11 @@
     justify-content: space-between;
     font-size: 1rem;
     color: white;
-    padding: 0 5rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid #444;
+    @media screen and (min-width: 567px) {
+      padding: 0 5rem;
+    }
   }
 
   &-navigation {
@@ -48,5 +57,76 @@
       @extend .App-button;
       background: #d93025;
     }
+  }
+
+  &-navigation-mobile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &-menu-mobile-container {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  &-menu-mobile-button {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+    &:before,
+    &:after {
+      display: block;
+      background-color: #fff;
+      position: absolute;
+      height: 4px;
+      width: 30px;
+      transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+      border-radius: 2px;
+    }
+    &:before {
+      content: "";
+      margin-top: -8px;
+    }
+    &:after {
+      content: "";
+      margin-top: 8px;
+    }
+    &.open {
+      background: transparent;
+      &:before {
+        margin-top: 0px;
+        transform: rotate(405deg);
+      }
+      &:after {
+        margin-top: 0px;
+        transform: rotate(-405deg);
+      }
+    }
+  }
+
+  &-menu-mobile {
+    background: rgb(90, 89, 89);
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 }
