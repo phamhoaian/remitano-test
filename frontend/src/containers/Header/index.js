@@ -52,7 +52,7 @@ const Header = () => {
           />
           <input
             type="password"
-            placeholder="Username"
+            placeholder="Password"
             className="App-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -97,7 +97,7 @@ const Header = () => {
             />
             <input
               type="password"
-              placeholder="Username"
+              placeholder="Password"
               className="App-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

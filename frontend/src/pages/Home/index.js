@@ -5,7 +5,7 @@ import { STATUS } from 'state/movie/constants'
 import { fetchMovies, fetchMoreMovies } from 'state/movie'
 import MovieItem from 'containers/MovieItem'
 import './Home.scss'
-const LIMIT_PER_PAGE = 2
+const LIMIT_PER_PAGE = 5
 
 const Home = () => {
   const dispatch = useDispatch()
