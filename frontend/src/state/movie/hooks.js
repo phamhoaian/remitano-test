@@ -7,3 +7,7 @@ export const useGetMovieList = () => {
 export const useGetMovieStatus = () => {
   return useSelector((state) => state.movie.status);
 }
+
+export const useGetTotalItems = () => {
+  return useSelector((state) => state.movie.totalItems);
+}

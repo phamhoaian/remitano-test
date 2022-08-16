@@ -5,11 +5,17 @@ import { STATUS } from './constants'
 const initialState = {
   status: STATUS.INITIAL,
   list: [],
-  page: 1,
+  totalItems: 0,
+  isLoadMore: false,
 }
 
-export const fetchMovies = createAsyncThunk('auth/fetchMovies', async ({ page, offset }) => {
-  const res = await getMovies(page, offset)
+export const fetchMovies = createAsyncThunk('auth/fetchMovies', async ({ limit, offset }) => {
+  const res = await getMovies(limit, offset)
+  return res
+})
+
+export const fetchMoreMovies = createAsyncThunk('auth/fetchMoreMovies', async ({ limit, offset }) => {
+  const res = await getMovies(limit, offset)
   return res
 })
 
@@ -29,11 +35,24 @@ const movieSlice = createSlice({
       state.status = STATUS.LOADING
     })
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
-      const list = action.payload
-      state.list = list
+      const { movies, totalItems } = action.payload
+      state.list = movies
+      state.totalItems = totalItems
       state.status = STATUS.SUCCESS
     })
     builder.addCase(fetchMovies.rejected, (state) => {
+      state.status = STATUS.ERROR
+    })
+    builder.addCase(fetchMoreMovies.pending, (state) => {
+      state.isLoadMore = true
+    })
+    builder.addCase(fetchMoreMovies.fulfilled, (state, action) => {
+      const { movies, totalItems } = action.payload
+      state.list = [...state.list, ...movies]
+      state.totalItems = totalItems
+      state.isLoadMore = false
+    })
+    builder.addCase(fetchMoreMovies.rejected, (state) => {
       state.status = STATUS.ERROR
     })
   }

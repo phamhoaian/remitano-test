@@ -2,8 +2,16 @@ const Movie = require('../models/MovieModel');
 const { getYoutubeVideoDetails } = require('../services/GoogleAPI')
 
 exports.getAllMovies = async (req, h) => {
-    const movies = await Movie.find()
-    return movies
+    const limit = parseInt(req.query.limit)
+    const offset = parseInt(req.query.offset)
+    const movies = await Movie.find().limit(limit).skip(offset).sort({ createdAt: -1 })
+    const totalItems = (await Movie.find()).length
+    return {
+        movies,
+        limit,
+        offset,
+        totalItems
+    }
 }
 
 exports.addMovie = async (req, h) => {
